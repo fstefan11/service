@@ -31,4 +31,19 @@ public class ArtistController {
     public ArtistDTO getArtist(@RequestParam(name = "id") String id) {
         return artistService.getArtist(id);
     }
+
+    @PutMapping("/artist/edit")
+    @ResponseBody
+    public ArtistDTO editArtist(@RequestParam(name = "id") String id, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "age", required = false) Integer age, @RequestParam(name = "genre", required = false) String genre, @RequestParam(name = "popularity", required = false) Integer popularity, @RequestParam(name = "hitSongs", required = false) String[] hitSongs) {
+        return artistService.editArtist(id, name, age, genre, popularity, hitSongs);
+    }
+
+    @DeleteMapping("/artist/delete")
+    @ResponseBody
+    public String deleteArtist(@RequestParam(name="id") String id) {
+        return artistService.deleteArtist(id);
+    }
+
+
 }
+
